@@ -1,0 +1,73 @@
+@startuml
+
+class CarFactory {
+    +create_calliope(current_date: date, last_service_date: date, current_mileage: int, last_service_mileage: int): Car
+    +create_glissande(current_date: date, last_service_date: date, current_mileage: int, last_service_mileage: int): Car
+    +create_palindrome(current_date: date, last_service_date: date, warning_light_on: bool): Car
+    +create_rorchach(current_date: date, last_service_date: date, current_mileage: int, last_service_mileage: int): Car
+    +create_thovex(current_date: date, last_service_date: date, current_mileage: int, last_service_mileage: int): Car
+}
+
+package Powertrain <<Rectangle>> {
+    class Engine {
+        +needs_service(): bool
+    }
+    class CapuletEngine {
+        -last_service_mileage: int
+        -current_mileage: int
+        +needs_service(): bool
+    }
+    class WilloughbyEngine {
+        -last_service_mileage: int
+        -current_mileage: int
+        +needs_service(): bool
+    }
+    class SternmanEngine {
+        -warning_light_on: bool
+        +needs_service(): bool
+    }
+
+    Engine <|.. CapuletEngine
+    Engine <|.. WilloughbyEngine
+    Engine <|.. SternmanEngine
+}
+
+package Electrical <<Rectangle>> {
+    class Battery {
+        +needs_service(): bool
+    }
+    class SpindlerBattery {
+        -last_service_date: date
+        -current_date: date
+        +needs_service(): bool
+    }
+    class NubbinBattery {
+        -last_service_date: date
+        -current_date: date
+        +needs_service(): bool
+    }
+
+    Battery <|.. SpindlerBattery
+    Battery <|.. NubbinBattery
+}
+
+class Car {
+    -engine: Engine
+    -battery: Battery
+    +needs_service(): bool
+}
+
+Electrical <-- CarFactory
+Powertrain <-- CarFactory
+Car <-- CarFactory
+
+Car *-- Engine
+Car *-- Battery
+
+class Serviceable {
+    +needs_service(): bool
+}
+
+Serviceable <|.. Car
+
+@enduml

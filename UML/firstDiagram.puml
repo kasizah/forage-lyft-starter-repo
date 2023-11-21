@@ -1,0 +1,30 @@
+@startuml
+
+class ABC
+class Car
+
+class CapuletEngine {
+    engine_should_be_serviced
+}
+class Calliope {
+    needs_service
+}
+ABC <|-- CapuletEngine
+Car <|-- CapuletEngine
+CapuletEngine <|-- Calliope
+
+class SternmanEngine {
+    engine_should_be_serviced
+}
+class Palindrome {
+    needs_service
+}
+ABC <|-- SternmanEngine
+Car <|-- SternmanEngine
+
+
+class WilloughbyEngine {
+    engine_should_be_serviced
+}
+
+@enduml
