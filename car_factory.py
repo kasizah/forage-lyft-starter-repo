@@ -56,7 +56,7 @@ class CarFactory:
         return Car(
             WilloughbyEngine(current_mileage, last_service_mileage), 
             NubbinBattery(current_date, last_service_date),
-            CarriganTires(tire_wear_array)
+            OctoprimeTires(tire_wear_array)
         )
     
     @staticmethod
@@ -68,5 +68,5 @@ class CarFactory:
         return Car(
             CapuletEngine(current_mileage, last_service_mileage), 
             NubbinBattery(current_date, last_service_date),
-            OctoprimeTires(tire_wear_array)
+            CarriganTires(tire_wear_array)
         )
