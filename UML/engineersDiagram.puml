@@ -1,11 +1,11 @@
 @startuml
 
 class CarFactory {
-    +create_calliope(current_date: date, last_service_date: date, current_mileage: int, last_service_mileage: int): Car
-    +create_glissande(current_date: date, last_service_date: date, current_mileage: int, last_service_mileage: int): Car
-    +create_palindrome(current_date: date, last_service_date: date, warning_light_on: bool): Car
-    +create_rorchach(current_date: date, last_service_date: date, current_mileage: int, last_service_mileage: int): Car
-    +create_thovex(current_date: date, last_service_date: date, current_mileage: int, last_service_mileage: int): Car
+    +create_calliope(current_mileage: int, last_service_mileage: int, last_service_date: date): Car
+    +create_glissande(current_mileage: int, last_service_mileage: int, last_service_date: date): Car
+    +create_palindrome(warning_light_on: bool, last_service_date: date): Car
+    +create_rorchach(current_mileage: int, last_service_mileage: int, last_service_date: date): Car
+    +create_thovex(current_mileage: int, last_service_mileage: int, last_service_date: date): Car
 }
 
 package Powertrain <<Rectangle>> {
@@ -38,12 +38,10 @@ package Electrical <<Rectangle>> {
     }
     class SpindlerBattery {
         -last_service_date: date
-        -current_date: date
         +needs_service(): bool
     }
     class NubbinBattery {
         -last_service_date: date
-        -current_date: date
         +needs_service(): bool
     }
 
